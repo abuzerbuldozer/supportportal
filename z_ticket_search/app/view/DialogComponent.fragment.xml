@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns:core="sap.ui.core">
+    <ResponsivePopover
+            showHeader="false"
+            contentWidth="400px"
+            contentHeight="700px"
+            placement="Auto"
+            modal = "true">
+        <content>
+            <Page   id="PageComponent"
+                    title="{i18n>DialogComponentTitle}"
+                    navButtonPress = "onDialogComponentPrevLevel"
+                    class = "marginBoxContent">
+                <headerContent>
+                    <Button id="closeButton" text="{i18n>Close}" press="onComponentValueHelpClose" />
+                </headerContent>
+                <subHeader>
+                    <Toolbar>
+                        <SearchField
+                                id="SearchField"
+                                search="onComponentSearch"
+                                visible="false"
+                                width="100%" />
+                    </Toolbar>
+                </subHeader>
+                <List id="ListComponent"
+                      items="{/Component}">
+                    <CustomListItem
+                            id="componentListItem"
+                            class="myContentStyle"
+                            press="onDialogComponentNextLevel"
+                            type="{CompListType}">
+                        <ObjectIdentifier id="componentIdentifier" title="{CompText}"
+                                          text="{CompID}"
+                                          titleActive="{CompSelectable}"
+                                          titlePress="onSelectComponent"/>
+                    </CustomListItem>
+                </List>
+            </Page>
+        </content>
+    </ResponsivePopover>
+</core:FragmentDefinition>

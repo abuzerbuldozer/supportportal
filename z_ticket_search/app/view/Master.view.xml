@@ -1,0 +1,127 @@
+  <!-- <core:View controllerName="a41s.go.test1.view.Master" busy="{appProp>/appBusy}" 
+	xmlns="sap.m" xmlns:lay="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" 
+	xmlns:html="http://www.w3.org/1999/xhtml" > <html:style> </html:style> <Page 
+	id="Page" title="{i18n>MasterTitle}" showNavButton="{appProp>/isPhone}" navButtonPress="onNavBack"> 
+	<Table id="idProductsTable" inset="false" mode="MultiToggle" itemPress="onListItemPress" 
+	enableSelectAll="false" enableBusyIndicator="true" items="{ path: '/Employee', 
+	sorter: { path: 'Name' } }"> <headerToolbar> <Toolbar> <Title text="Employee 
+	Details" level="H2" /> <Button text="Help" press="buttonpress"></Button> 
+	</Toolbar> </headerToolbar> <columns> <Column width="12em" sortProperty="id" 
+	filterProperty="id" autoResizable="true"> <Text text="ID" /> </Column> <Column 
+	minScreenWidth="Tablet" demandPopin="true"> <Text text="Name" /> </Column> 
+	<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center"> <Text 
+	text="Surname" /> </Column> <Column minScreenWidth="Tablet" demandPopin="true" 
+	hAlign="Center"> <Text text="E-mail" /> </Column> </columns> <items> <ColumnListItem> 
+	<cells> <Link text="{Id}" emphasized="true" subtle="true" press="handleLinkPress" 
+	/> <Text text="{Name}" /> <Text text="{Surname}" /> <Text text="{Email}" 
+	/> </cells> </ColumnListItem> </items> </Table> </Page> </core:View> -->
+<mvc:View controllerName="a41s.go.test1.view.Master" busy="{appProp>/appBusy}"
+	height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:vm="sap.ui.comp.variants" >
+	<html:style>
+	</html:style>
+	<Page id="dynamicPageId" enableScrolling="true" title="Ticket Search" icon="sap-icon://search"> 
+	<layout:VerticalLayout id="verticalLayout" width="60%">
+	<Toolbar width="100%" id="__toolbar1">
+ 		 <content>  
+            <Select id="SearchType1" width="50%">
+                  <core:Item key="Id" text="Incident ID" />                 
+                  <core:Item key="Pr" text="Priority" />          
+                  <core:Item key="Cp" text="Company Number" />        
+            </Select>  
+             <Input
+				 id="Input1" width="55%" >
+			 </Input>
+<!--              <Input  class="sapUiSmallMarginBottom" type="Text" width = "20%" /> 
+ 				<VBox>
+		 		 <Button id="filter" text="Suchen" press="handleSuchen" /> 	
+		 		</VBox>  -->
+		 		 <Button class="add_field_button" icon="sap-icon://add" type="accept" press="onAdd"></Button>
+		 		 <Button icon="sap-icon://delete" type="cancel" press="onCancel"></Button>			  
+		 </content>
+		 </Toolbar>
+
+		 </layout:VerticalLayout>
+		 <VBox>
+		 <Button text="Search" press="handleSuchen"></Button>
+		 </VBox>
+		 
+	
+		<content>
+			
+
+<ScrollContainer horizontal="true" vertical="true" height="70%">
+			<Table id="idProductsTable" sortProperty="Name" 
+				   visibleRowCount="7" enableSelectAll="false" growing="true"  growingThreshold="8" growingScrollToLoad="true"
+				items="{
+                            path: '/ticket_s'
+                        }">
+
+				<columns> 
+					<Column  demandPopin="true" width="8rem">
+						<Text text="ID" />
+					</Column>
+					<Column  demandPopin="true" width="7rem">
+						<Text text="Company Number" />
+					</Column>
+					<Column   demandPopin="true" width="8rem">
+						<Text text="Reporter Number" />
+					</Column>
+			        <Column   demandPopin="true" width="10rem">
+						<Text text="Reporter Name" />
+					</Column>
+			        <Column  demandPopin="true" width="6rem">
+						<Text text="Supplier Team Number" />
+					</Column>
+					 <Column   demandPopin="true" width="10rem">
+						<Text text="Supplier Team Name" />
+					</Column> 
+					 <Column   demandPopin="true" width="12rem"> 
+						<Text text="Description" />
+					</Column> 
+					 <Column  demandPopin="true" width="5rem"> 
+						<Text text="Priority" />
+					</Column>
+					 <Column    demandPopin="true" width="5rem">
+						<Text text="Category" />
+					</Column>
+					 <Column   demandPopin="true" width="10rem">
+						<Text text="Sap Company" />
+					</Column>		
+					 <Column  demandPopin="true" width="5rem">
+						<Text text="Status" />
+					</Column>	
+					 <Column   demandPopin="true" width="5rem">
+						<Text text="Processor Number" />
+					</Column>	
+					 <Column   demandPopin="true" width="10rem">
+						<Text text="Processor Name" />
+					</Column>																																		
+				</columns>
+
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells> 
+							<Text text="{ObjectId}" />
+							<Text text="{CompanyNr}" />
+							<Text text="{ReporterNr}" />
+							<Text text="{ReporterName}" />
+							<Text text="{SuppTeamNr}" />
+							<Text text="{SuppTeamName}" />
+							<Text text="{Description}" />
+							<Text text="{Priority}"  />
+							<Text text="{Category}" />
+							<Text text="{SapComp}" />
+							<Text text="{Status}" />
+							<Text text="{ProcessorNr}" />
+							<Text text="{ProcessorName}" />							
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		 </ScrollContainer>
+		</content>
+	</Page>
+</mvc:View> 
